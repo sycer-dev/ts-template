@@ -1,0 +1,25 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"downlevelIteration": true,
+		"esModuleInterop": true,
+		"importHelpers": true,
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"outDir": "dist",
+		"removeComments": true,
+		"resolveJsonModule": true,
+		"sourceMap": true,
+		"strict": true,
+		"target": "es2019",
+		"lib": [
+			"ESNext"
+		]
+	},
+	"exclude": [
+		"node_modules"
+	],
+	"include": [
+		"src"
+	]
+}
