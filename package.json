@@ -6,38 +6,41 @@
     "author": "Carter Himmel <fyko@sycer.dev>",
     "license": "Apache-2.0",
     "scripts": {
-        "build": "pnpm run cleardir && pnpm run compile",
+        "preinstall": "npx only-allow npm",
+        "build": "rimraf dist/* && tsc",
+        "build:ci": "tsc --noEmit --incremental false",
         "cleardir": "rimraf dist/*",
-		"compile": "tsc",
-		"dev": "ts-node-dev --debug ./src/index.ts",
+        "dev": "ts-node-dev --debug ./src/index.ts",
         "lint": "eslint src --ext .ts",
         "lint:fix": "eslint src --fix --ext .ts",
-        "start": "pnpm run build && node ."
-    },
-    "dependencies": {
-        "tslib": "^1"
+        "prestart": "npm run build",
+        "start": "node ."
     },
     "devDependencies": {
-        "@types/node": "^12",
-        "@typescript-eslint/eslint-plugin": "^2",
-        "@typescript-eslint/parser": "^2",
-        "dotenv": "^8",
-        "eslint": "^6",
-        "eslint-config-marine": "^5",
-        "eslint-config-prettier": "^6",
-        "eslint-plugin-prettier": "^3",
-        "prettier": "^1",
-        "rimraf": "^3",
-        "ts-node-dev": "^1",
-        "typescript": "^3"
+        "@types/node": "^14.14.34",
+        "@typescript-eslint/eslint-plugin": "^4.17.0",
+        "@typescript-eslint/parser": "^4.17.0",
+        "dotenv": "^8.2.0",
+        "eslint": "^7.21.0",
+        "eslint-config-marine": "^8.3.2",
+        "eslint-config-prettier": "^8.1.0",
+        "eslint-plugin-prettier": "^3.3.1",
+        "prettier": "^2.2.1",
+        "rimraf": "^3.0.2",
+        "ts-node-dev": "^1.1.6",
+        "typescript": "^4.2.3"
     },
-    "eslintConfig": {
-        "extends": "marine/prettier/node",
-        "rules": {
-            "comma-dangle": [
-                "error",
-                "always-multiline"
-            ]
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
         }
+    },
+    "lint-staged": {
+        "*.{mjs,js,ts}": "eslint --fix --ext mjs,js,ts",
+        "*.{json,yml,yaml}": "prettier --write"
+    },
+    "volta": {
+        "node": "15.11.0",
+        "npm": "7.6.0"
     }
 }
