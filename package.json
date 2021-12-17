@@ -6,29 +6,25 @@
     "author": "Carter Himmel <fyko@sycer.dev>",
     "license": "Apache-2.0",
     "scripts": {
-        "preinstall": "npx only-allow npm",
         "build": "rimraf dist/* && tsc",
         "build:ci": "tsc --noEmit --incremental false",
-        "cleardir": "rimraf dist/*",
         "dev": "ts-node-dev --debug ./src/index.ts",
         "lint": "eslint src --ext .ts",
-        "lint:fix": "eslint src --fix --ext .ts",
-        "prestart": "npm run build",
-        "start": "node ."
+        "lint:fix": "eslint src --fix --ext .ts"
     },
     "devDependencies": {
-        "@types/node": "^14.14.34",
-        "@typescript-eslint/eslint-plugin": "^4.17.0",
-        "@typescript-eslint/parser": "^4.17.0",
-        "dotenv": "^8.2.0",
-        "eslint": "^7.21.0",
-        "eslint-config-marine": "^8.3.2",
-        "eslint-config-prettier": "^8.1.0",
-        "eslint-plugin-prettier": "^3.3.1",
-        "prettier": "^2.2.1",
+        "@types/node": "16",
+        "@typescript-eslint/eslint-plugin": "^5.7.0",
+        "@typescript-eslint/parser": "^5.7.0",
+        "dotenv": "^10.0.0",
+        "eslint": "^8.5.0",
+        "eslint-config-marine": "^9.1.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "prettier": "^2.5.1",
         "rimraf": "^3.0.2",
-        "ts-node-dev": "^1.1.6",
-        "typescript": "^4.2.3"
+        "ts-node-dev": "^1.1.8",
+        "typescript": "^4.5.4"
     },
     "husky": {
         "hooks": {
@@ -40,7 +36,8 @@
         "*.{json,yml,yaml}": "prettier --write"
     },
     "volta": {
-        "node": "15.11.0",
+        "node": "16.13.1",
         "npm": "7.6.0"
-    }
+    },
+    "packageManager": "yarn@3.1.1"
 }
